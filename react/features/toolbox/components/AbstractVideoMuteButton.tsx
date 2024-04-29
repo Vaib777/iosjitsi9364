@@ -9,9 +9,9 @@ import { translate } from '../../base/i18n/functions';
 import { MEDIA_TYPE } from '../../base/media/constants';
 import AbstractButton, { IProps as AbstractButtonProps } from '../../base/toolbox/components/AbstractButton';
 import AbstractVideoMuteButton from '../../base/toolbox/components/BaseVideoMuteButton';
-import { isLocalTrackMuted } from '../../base/tracks/functions.any';
-import { registerShortcut, unregisterShortcut } from '../../keyboard-shortcuts/actions.any';
-import { handleToggleVideoMuted } from '../actions.any';
+import { isLocalTrackMuted } from '../../base/tracks/functions.native';
+import { registerShortcut, unregisterShortcut } from '../../keyboard-shortcuts/actions.native';
+import { handleToggleVideoMuted } from '../actions.native';
 import { isVideoMuteButtonDisabled } from '../functions.native';
 
 /**

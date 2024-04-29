@@ -170,7 +170,7 @@ class AudioRoutePickerDialog extends Component<IProps, IState> {
         }
 
         const audioDevices = [];
-
+console.log("devices",devices);
         for (const device of devices) {
             const infoMap = deviceInfoMap[device.type as keyof typeof deviceInfoMap];
 

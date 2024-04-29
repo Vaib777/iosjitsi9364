@@ -4,8 +4,8 @@ import { IReduxState, IStore } from '../../app/types';
 import { setIAmVisitor } from '../../visitors/actions';
 import { iAmVisitor } from '../../visitors/functions';
 import { overwriteConfig } from '../config/actions';
-import { getReplaceParticipant } from '../config/functions';
-import { connect, disconnect, hangup } from '../connection/actions';
+import { getReplaceParticipant } from '../config/functions.native';
+import {  disconnect,hangup } from '../connection/actions.native';
 import { JITSI_CONNECTION_CONFERENCE_KEY } from '../connection/constants';
 import { JitsiConferenceEvents, JitsiE2ePingEvents } from '../lib-jitsi-meet';
 import {
@@ -15,6 +15,11 @@ import {
     setVideoMuted,
     setVideoUnmutePermissions
 } from '../media/actions';
+import {
+    NativeModules,
+
+} from 'react-native';
+import { appNavigate } from '../../app/actions.native';
 import { MEDIA_TYPE } from '../media/constants';
 import { IGUMPendingState } from '../media/types';
 import {
@@ -712,8 +717,30 @@ export function kickedOut(conference: IJitsiConference, participant: Object) {
  *
  * @returns {Function}
  */
+// export function leaveConference() {
+//     return async (dispatch: IStore['dispatch']) => {
+
+//         // FIXME: these should be unified.
+       
+//             dispatch(disconnect(true));
+//             NativeModules.ExitApp.exitApp();
+//     };
+// }
+// export function leaveConference() {
+//     return async (dispatch: IStore['dispatch']) => {
+
+//         // FIXME: these should be unified.
+       
+//             dispatch(disconnect(true));
+            
+        
+//     };
+// }
 export function leaveConference() {
-    return async (dispatch: IStore['dispatch']) => dispatch(hangup(true));
+    return async (dispatch: IStore['dispatch']) => {
+
+       dispatch(hangup(true));
+    };
 }
 
 /**

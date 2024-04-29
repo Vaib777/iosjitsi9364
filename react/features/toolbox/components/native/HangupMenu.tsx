@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { createBreakoutRoomsEvent, createToolbarEvent } from '../../../analytics/AnalyticsEvents';
 import { sendAnalytics } from '../../../analytics/functions';
-import { appNavigate } from '../../../app/actions';
+import { appNavigate } from '../../../app/actions.native';
 import { IReduxState } from '../../../app/types';
 import ColorSchemeRegistry from '../../../base/color-scheme/ColorSchemeRegistry';
 import { endConference } from '../../../base/conference/actions';

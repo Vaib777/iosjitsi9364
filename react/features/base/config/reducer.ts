@@ -20,7 +20,7 @@ import {
     IDeeplinkingMobileConfig,
     IMobileDynamicLink
 } from './configType';
-import { _cleanupConfig, _setDeeplinkingDefaults } from './functions';
+import { _cleanupConfig, _setDeeplinkingDefaults } from './functions.native';
 
 /**
  * The initial state of the feature base/config when executing in a

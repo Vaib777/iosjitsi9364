@@ -20,6 +20,10 @@ import {
     getBreakoutRooms,
     getCurrentRoomId
 } from '../../../breakout-rooms/functions';
+import {NativeModules} from 'react-native';
+
+// @ts-ignore
+import CollapsibleList from './CollapsibleList';
 import { doInvitePeople } from '../../../invite/actions.native';
 import { getInviteOthersControl } from '../../../share-room/functions';
 import { participantMatchesSearch, shouldRenderInviteButton } from '../../functions';
@@ -29,6 +33,7 @@ import styles from './styles';
 
 
 const MeetingParticipantList = () => {
+    const { OpenMelpModule } = NativeModules;
     const currentRoomId = useSelector(getCurrentRoomId);
     const currentRoom = useSelector(getBreakoutRooms)[currentRoomId];
     const dispatch = useDispatch();
@@ -38,8 +43,9 @@ const MeetingParticipantList = () => {
         = useCallback((e: undefined, i: number) => i.toString(), []);
     const localParticipant = useSelector(getLocalParticipant);
     const onInvite = useCallback(() => {
-        setShareDialogVisiblity(isAddPeopleFeatureEnabled, dispatch);
-        dispatch(doInvitePeople());
+        // setShareDialogVisiblity(isAddPeopleFeatureEnabled, dispatch);
+        // dispatch(doInvitePeople());
+        OpenMelpModule.addToCall();
     }, [ dispatch ]);
     const [ searchString, setSearchString ] = useState('');
     const onSearchStringChange = useCallback((text: string) =>
@@ -77,6 +83,7 @@ const MeetingParticipantList = () => {
                 { title }
             </Text>
             {
+                
                 showInviteButton
                 && <Button
                     accessibilityLabel = 'participantsPane.actions.invite'
@@ -93,6 +100,8 @@ const MeetingParticipantList = () => {
                     onClick = { onInvite }
                     style = { styles.inviteButton }
                     type = { BUTTON_TYPES.PRIMARY } />
+                
+             
             }
             <Input
                 clearable = { true }

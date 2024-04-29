@@ -101,13 +101,12 @@ const TitleBar = (props: IProps) => {
             <View style = { styles.titleBarButtonContainer }>
                 <AudioDeviceToggleButton styles = { styles.titleBarButton } />
             </View>
-            {
-                _isParticipantsPaneEnabled
-                && <View style = { styles.titleBarButtonContainer }>
+            
+               <View style = { styles.titleBarButtonContainer }>
                     <ParticipantsPaneButton
                         styles = { styles.titleBarButton } />
                 </View>
-            }
+            
         </View>
     );
 };

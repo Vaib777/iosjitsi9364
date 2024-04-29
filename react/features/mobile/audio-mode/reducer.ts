@@ -18,7 +18,7 @@ const DEFAULT_STATE = {
 
 ReducerRegistry.register<IMobileAudioModeState>('features/mobile/audio-mode',
 (state = DEFAULT_STATE, action): IMobileAudioModeState => {
-    console.log("DEFAULT_STATE",DEFAULT_STATE);
+    //console.log("DEFAULT_STATE",DEFAULT_STATE);
     switch (action.type) {
     case _SET_AUDIOMODE_DEVICES: {
         const { devices } = action;

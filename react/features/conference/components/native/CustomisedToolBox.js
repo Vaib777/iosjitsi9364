@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, Text, TouchableHighlight } from 'react-native';
 import AudioMuteButton from '../../../toolbox/components/AbstractAudioMuteButton';
 import VideoMuteButton from '../../../toolbox/components/AbstractVideoMuteButton';
-import HangupButton from '../../../toolbox/components/native/HangupMenuButton';
+import HangupButton from '../../../toolbox/components/HangupButton';
 import ChatButton from '../../../../features/chat/components/native/ChatButton';
 import { IReduxState, IStore } from '../../../app/types';
 import AudioDeviceToggleButton from '../../../mobile/audio-mode/components/AudioDeviceToggleButton';
@@ -67,21 +67,17 @@ class CustomisedToolBox extends Component<Props, *> {
             this.props.dispatch(openSheet(AudioRoutePickerDialog));
         }else{
         const { setSpeakerState, speakerOn } = this.props;
-
-        if(AudioMode.setSpeakerOn && setSpeakerState){
-            AudioMode.setSpeakerOn(!speakerOn)
-            .then((val)=>{
-                this.props.setSpeakerState(!speakerOn)
+       
+        if(setSpeakerState){
+            
+                this.props.setSpeakerState(!speakerOn);
                 if(speakerOn){
                     AudioMode.setAudioDevice("SPEAKER");
                 }else{
                     AudioMode.setAudioDevice("Built-In Microphone");
 
                 }
-            })
-            .catch(err=>{
-
-            });
+          
         }
     }
     }
@@ -166,7 +162,7 @@ class CustomisedToolBox extends Component<Props, *> {
     var icon = SPEAKER_DISABLED_ICON ;
     
     const devices = this.props._devices;
-    console.log("devices",devices);
+    //console.log("devices",devices);
 
     for(let i = 0; i < devices.length; i++){
         let singleObject = devices[i];
@@ -249,7 +245,7 @@ class CustomisedToolBox extends Component<Props, *> {
                         </VideoMuteButton>
                         <AudioDeviceToggleButton>
                              {(_onClick) =>
-                            (<TouchableHighlight disabled = {isHoldOn} onPress={_onClick} underlayColor={ColorPalette.transparent}>
+                            (<TouchableHighlight disabled = {isHoldOn} onPress={this._handleSpeakerClick} underlayColor={ColorPalette.transparent}>
                                 <View style = { styles.toolBoxFunctionContainerStyle }>
                                 <Image  source={icon} 
                                 style={styles.speakerIconStyle}/>

@@ -268,7 +268,7 @@ class Conference extends AbstractConference<IProps, State> {
 
         const { audioOnly } = this.props;
 
-        //  console.log("Audio Only--->",this.props);
+        console.log("audioOnly---",audioOnly);
 
         if (audioOnly) {
 
@@ -355,6 +355,7 @@ class Conference extends AbstractConference<IProps, State> {
         //     _showLobby,
         //     _startCarMode
         // } = this.props;
+        console.log("Enter conference ");
         const { _showLobby } = this.props;
 
         if (!prevProps._showLobby && _showLobby) {
@@ -663,7 +664,7 @@ class Conference extends AbstractConference<IProps, State> {
         }
 
         OpenMelpModule.isAudioMode(true);
-
+        console.log("Enter conference render ");
         return (
             !audioOnly ? <ConferenceOld />
 

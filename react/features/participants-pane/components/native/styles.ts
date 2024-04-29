@@ -192,7 +192,12 @@ export default {
     meetingListDescription: {
         ...participantListDescription
     },
-
+    meetingListFullContainer: {
+        height: '80%'
+    },
+    notLocalModeratorContainer: {
+        height: '100%'
+    },
     participantsPaneContainer: {
         backgroundColor: BaseTheme.palette.ui01,
         flex: 1,

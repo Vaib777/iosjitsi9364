@@ -1,10 +1,10 @@
 import { Alert, NativeModules, Platform } from 'react-native';
 import { AnyAction } from 'redux';
 import { v4 as uuidv4 } from 'uuid';
-
+import jwtDecode from 'jwt-decode';
 import { createTrackMutedEvent } from '../../analytics/AnalyticsEvents';
 import { sendAnalytics } from '../../analytics/functions';
-import { appNavigate } from '../../app/actions';
+import { appNavigate } from '../../app/actions.native';
 import { IReduxState, IStore } from '../../app/types';
 import { APP_WILL_MOUNT, APP_WILL_UNMOUNT } from '../../base/app/actionTypes';
 import { SET_AUDIO_ONLY } from '../../base/audio-only/actionTypes';
@@ -225,7 +225,6 @@ function _conferenceJoined({ getState }: IStore, next: Function, action: AnyActi
  */
 function _conferenceLeft({ getState }: IStore, next: Function, action: AnyAction) {
     const result = next(action);
-
     if (!isCallIntegrationEnabled(getState)) {
         return result;
     }
@@ -263,10 +262,19 @@ function _conferenceWillJoin({ dispatch, getState }: IStore, next: Function, act
     const { conference } = action;
     const state = getState();
     const { callHandle, callUUID } = state['features/base/config'];
+    //const JWTPAYload = state['features/base/jwt']
+    const _settings = state['features/base/settings'];
+    //console.log("roomName",JWTPAYload);
     const url = getInviteURL(state);
-    const handle = callHandle || url.toString();
+   //let  decodeJWt= jwtDecode(JWTPAYload.jwt);
+    //const handle = JWTPAYload.roomName||callHandle|| url.toString();
+    const handle = _settings.teamName || callHandle|| url.toString();
     const hasVideo = !isVideoMutedByAudioOnly(state);
-
+    //console.log("decodeJWt",decodeJWt);
+    //console.log("JWTPAYload.roomName",JWTPAYload.user?.name);
+    // console.log("_settings.teamName ",_settings.teamName );
+    // console.log("callHandle",callHandle);
+    // console.log("callUUID",callUUID);
     // If we already have a callUUID set, don't start a new call.
     if (conference.callUUID) {
         return result;
@@ -276,10 +284,13 @@ function _conferenceWillJoin({ dispatch, getState }: IStore, next: Function, act
     // it upper-cased.
     conference.callUUID = (callUUID || uuidv4()).toUpperCase();
 
-    CallIntegration.startCall(conference.callUUID, handle, hasVideo)
+//console.log("handle",handle);
+
+
+    CallIntegration.startCall(conference.callUUID,handle, hasVideo)
         .then(() => {
             const displayName = getConferenceName(state);
-
+            //console.log("displayName",displayName);
             CallIntegration.updateCall(
                 conference.callUUID,
                 {

@@ -205,8 +205,8 @@ export interface IConfig {
     }>;
     callDisplayName?: string;
     callFlowsEnabled?: boolean;
-    callHandle?: string;
-    callUUID?: string;
+    callHandle?: any;
+    callUUID?: any;
     cameraFacingMode?: string;
     channelLastN?: number;
     chromeExtensionBanner?: {

@@ -2,7 +2,7 @@ import ColorSchemeRegistry from '../../../base/color-scheme/ColorSchemeRegistry'
 import { schemeColor } from '../../../base/color-scheme/functions';
 import BaseTheme from '../../../base/ui/components/BaseTheme.native';
 
-const BUTTON_SIZE = 48;
+const BUTTON_SIZE = 50;
 
 // Toolbox, toolbar:
 
@@ -27,7 +27,7 @@ const toolbarButton = {
 const toolbarButtonIcon = {
     alignSelf: 'center',
     color: BaseTheme.palette.icon04,
-    fontSize: 24
+    fontSize: 40
 };
 
 
@@ -92,12 +92,28 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
+    toolbox2: {
+        alignItems: 'center',
+        backgroundColor: 'transparent',
+        borderTopLeftRadius: 3,
+        borderTopRightRadius: 3,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
 
     /**
      * The style of the root/top-level container of {@link Toolbox}.
      */
     toolboxContainer: {
         backgroundColor: BaseTheme.palette.uiBackground,
+        flexDirection: 'column',
+        maxWidth: 580,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '100%'
+    },
+    toolboxContainer2: {
+        backgroundColor: 'transparent',
         flexDirection: 'column',
         maxWidth: 580,
         marginLeft: 'auto',

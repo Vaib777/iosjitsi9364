@@ -89,6 +89,7 @@ class CalleeDetails extends Component {
                                     if(participantText.length>25){
                                         participantText = participantText.slice(0,22)+"..."
                                     }
+                                    console.log(connectionState);
                                     if(connectionState ===' '){
                                         connectionState = 'Connecting...'
                                     }

@@ -49,13 +49,13 @@ import {
     AbstractConference,
     abstractMapStateToProps
 } from '../AbstractConference';
-import type { AbstractProps } from '../AbstractConference';
+import  AbstractProps  from '../AbstractConference';
 import { isConnecting } from '../functions';
 
 import AlwaysOnLabels from './AlwaysOnLabels';
 import ExpandedLabelPopup from './ExpandedLabelPopup';
 import LonelyMeetingExperience from './LonelyMeetingExperience';
-import TitleBar from './TitleBar';
+import TitleBar from '../native/TitleBar';
 import { EXPANDED_LABEL_TIMEOUT } from './constants';
 import styles from './styles';
 

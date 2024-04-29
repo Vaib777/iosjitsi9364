@@ -11,18 +11,12 @@ import { getCurrentConference } from '../../base/conference/functions';
 import ConnectionService from '../../../features/mobile/call-integration/CallKit';
 import jwtDecode from 'jwt-decode';
 import { v4 as uuidv4 } from 'uuid';
-import CallKit from '../../mobile/call-integration/CallKit';
-import { appNavigate } from '../../app/actions.native';
-import {  NativeModules} from 'react-native';
-const { OpenMelpModule } = NativeModules;
 /**
  * Component that renders a toolbar button for leaving the current conference.
  *
  * @augments AbstractHangupButton
  */
-const CallIntegration = CallKit || ConnectionService;
-class HangupButton extends AbstractHangupButton<AbstractButtonProps> {
-
+class HangupAudio extends AbstractHangupButton<AbstractButtonProps> {
     _hangup: Function;
 
     accessibilityLabel = 'toolbar.accessibilityLabel.hangup';
@@ -39,16 +33,15 @@ class HangupButton extends AbstractHangupButton<AbstractButtonProps> {
         super(props);
 
         this._hangup = _.once(() => {
-            // if (uuidv4().toUpperCase()) {
-            //     console.log(uuidv4().toUpperCase());
-            //     CallIntegration.endCall(uuidv4().toUpperCase());
-            // }
-            // sendAnalytics(createToolbarEvent('hangup'));
-            //appNavigate(undefined);
-            console.log(">>>>>>>>>>Hangupressed");
-            this.props.dispatch(leaveConference());
           
 
+            // //const handle = JWTPAYload.roomName||callHandle|| url.toString();
+            // console.log(">>>>>>>>>>>",uuidv4().toUpperCase());
+            // if (uuidv4().toUpperCase()) {
+            //     ConnectionService.endCall(uuidv4().toUpperCase()); // Call the CallKit end call function
+            // }
+              sendAnalytics(createToolbarEvent('hangup'));
+            this.props.dispatch(leaveConference());
         });
     }
 
@@ -61,7 +54,6 @@ class HangupButton extends AbstractHangupButton<AbstractButtonProps> {
      */
     _doHangup() {
         this._hangup();
-        OpenMelpModule.hangup();
     }
     _getView(props) {
         if (props.children) {
@@ -72,4 +64,4 @@ class HangupButton extends AbstractHangupButton<AbstractButtonProps> {
     }
 }
 
-export default translate(connect()(HangupButton));
+export default translate(connect()(HangupAudio));

@@ -199,7 +199,7 @@ RCT_EXPORT_METHOD(updateCall:(NSString *)callUUID
         reject(nil, [NSString stringWithFormat:@"Invalid UUID: %@", callUUID], nil);
         return;
     }
- 
+
     NSString *displayName = options[@"displayName"];
     BOOL hasVideo = [(NSNumber*)options[@"hasVideo"] boolValue];
 
