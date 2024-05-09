@@ -1,3 +1,5 @@
+
+// @flow
 import { RTCPeerConnection as PC } from 'react-native-webrtc';
 
 import { synthesizeIPv6Addresses } from './ipv6utils';

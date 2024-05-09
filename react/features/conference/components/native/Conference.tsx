@@ -355,7 +355,7 @@ class Conference extends AbstractConference<IProps, State> {
         //     _showLobby,
         //     _startCarMode
         // } = this.props;
-        console.log("Enter conference ");
+     
         const { _showLobby } = this.props;
 
         if (!prevProps._showLobby && _showLobby) {

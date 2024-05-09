@@ -193,7 +193,9 @@ function _conferenceJoined({ getState }: IStore, next: Function, action: AnyActi
                 // iOS 13 doesn't like the mute state to be false before the call is started
                 // so we update it here in case the user selected startWithAudioMuted.
                 if (Platform.OS === 'ios') {
+                
                     _updateCallIntegrationMuted(action.conference, getState());
+                    
                 }
             })
             .catch(() => {
@@ -301,6 +303,7 @@ function _conferenceWillJoin({ dispatch, getState }: IStore, next: Function, act
             // iOS 13 doesn't like the mute state to be false before the call is started
             // so delay it until the conference was joined.
             if (Platform.OS !== 'ios') {
+               
                 _updateCallIntegrationMuted(conference, state);
             }
         })
@@ -396,6 +399,7 @@ function _onPerformSetMutedCallAction({ callUUID, muted }: { callUUID: string; m
 
     if (conference && conference.callUUID === callUUID) {
         muted = Boolean(muted); // eslint-disable-line no-param-reassign
+        
         sendAnalytics(
             createTrackMutedEvent('audio', 'call-integration', muted));
         dispatch(setAudioMuted(muted, /* ensureTrack */ true));
@@ -431,7 +435,7 @@ function _setAudioOnly({ getState }: IStore, next: Function, action: AnyAction) 
     }
 
     const conference = getCurrentConference(state);
-
+   
     if (conference?.callUUID) {
         CallIntegration.updateCall(
             conference.callUUID,
@@ -494,6 +498,7 @@ function _syncTrackState({ getState }: IStore, next: Function, action: AnyAction
     if (jitsiTrack.isLocal() && conference && conference.callUUID) {
         switch (jitsiTrack.getType()) {
         case 'audio': {
+        
             _updateCallIntegrationMuted(conference, state);
             break;
         }
@@ -520,6 +525,7 @@ function _syncTrackState({ getState }: IStore, next: Function, action: AnyAction
  */
 function _updateCallIntegrationMuted(conference: IJitsiConference, state: IReduxState) {
     const muted = isLocalTrackMuted(state['features/base/tracks'], MEDIA_TYPE.AUDIO);
-
+  
     CallIntegration.setMuted(conference.callUUID, muted);
 }
+

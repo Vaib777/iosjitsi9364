@@ -20,7 +20,7 @@ import {
 } from '../base/participants/functions';
 import { IParticipant } from '../base/participants/types';
 import { toState } from '../base/redux/functions';
-import { normalizeAccents } from '../base/util/strings';
+import { normalizeAccents } from '../base/util/strings.native';
 import { BREAKOUT_ROOMS_RENAME_FEATURE } from '../breakout-rooms/constants';
 import { isInBreakoutRoom } from '../breakout-rooms/functions';
 

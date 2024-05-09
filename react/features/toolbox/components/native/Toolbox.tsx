@@ -14,12 +14,12 @@ import { iAmVisitor } from '../../../visitors/functions';
 import { getMovableButtons, isToolboxVisible } from '../../functions.native';
 import HangupButton from '../HangupButton';
 
-import AudioMuteButton from '../AbstractAudioMuteButton';
+import AudioMuteButton from '../native/AudioMuteButton';
 import HangupMenuButton from './HangupMenuButton';
 import OverflowMenuButton from './OverflowMenuButton';
 import RaiseHandButton from './RaiseHandButton';
 import ScreenSharingButton from './ScreenSharingButton';
-import VideoMuteButton from '../AbstractVideoMuteButton';
+import VideoMuteButton from '../native/VideoMuteButton';
 import styles from './styles';
 
 /**

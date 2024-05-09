@@ -19,16 +19,18 @@ MiddlewareRegistry.register(store => next => action => {
             break;
         }
 
-        const [ reason ] = error.params;
+        // const [ reason ] = error.params;
 
-        const reasonKey = Object.keys(TRIGGER_READY_TO_CLOSE_REASONS)[
-            Object.values(TRIGGER_READY_TO_CLOSE_REASONS).indexOf(reason)
-        ];
+        // const reasonKey = Object.keys(TRIGGER_READY_TO_CLOSE_REASONS)[
+        //     Object.values(TRIGGER_READY_TO_CLOSE_REASONS).indexOf(reason)
+        // ];
 
-        dispatch(notifyConferenceFailed(reasonKey, () => {
-            dispatch(conferenceLeft(action.conference));
-            dispatch(appNavigate(undefined));
-        }));
+        // dispatch(notifyConferenceFailed(reasonKey, () => {
+        //     dispatch(conferenceLeft(action.conference));
+        //     dispatch(appNavigate(undefined));
+        // }));
+        dispatch(conferenceLeft(action.conference));
+        dispatch(appNavigate(undefined));
     }
     }
 

@@ -1800,10 +1800,10 @@ export default {
         room.on(
             JitsiConferenceEvents.DISPLAY_NAME_CHANGED,
             (id, displayName) => {
-                console.log(">>>>displayName>>>", displayName);
+              
                 const formattedDisplayName
                     = getNormalizedDisplayName(displayName);
-                    console.log(">>>formattedDisplayName>>>", formattedDisplayName);
+                   
                 const state = APP.store.getState();
                 const {
                     defaultRemoteDisplayName

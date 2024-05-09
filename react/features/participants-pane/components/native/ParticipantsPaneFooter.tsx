@@ -49,7 +49,7 @@ const ParticipantsPaneFooter = (): JSX.Element => {
 
     return (
         <View style = { styles.participantsPaneFooterContainer as ViewStyle }>
-            {
+            {/* {
                 isBreakoutRoomsSupported
                 && isBreakoutRoomsEnabled
                 && <Button
@@ -66,7 +66,7 @@ const ParticipantsPaneFooter = (): JSX.Element => {
                     onClick = { () => navigate(screen.conference.breakoutRooms) }
                     style = { styles.breakoutRoomsButton }
                     type = { BUTTON_TYPES.SECONDARY } />
-            }
+            } */}
 
             <View style = { styles.participantsPaneFooter as ViewStyle }>
                 {

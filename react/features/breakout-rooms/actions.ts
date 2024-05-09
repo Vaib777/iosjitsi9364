@@ -14,11 +14,11 @@ import { getCurrentConference } from '../base/conference/functions';
 import { setAudioMuted, setVideoMuted } from '../base/media/actions';
 import { MEDIA_TYPE } from '../base/media/constants';
 import { getRemoteParticipants } from '../base/participants/functions';
-import { createDesiredLocalTracks } from '../base/tracks/actions';
+import { createDesiredLocalTracks } from '../base/tracks/actions.native';
 import {
     getLocalTracks,
     isLocalTrackMuted
-} from '../base/tracks/functions';
+} from '../base/tracks/functions.native';
 import { clearNotifications, showNotification } from '../notifications/actions';
 import { NOTIFICATION_TIMEOUT_TYPE } from '../notifications/constants';
 

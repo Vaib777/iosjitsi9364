@@ -192,11 +192,12 @@ export function getVideoTrackByParticipant(
         participant?: IParticipant) {
 
     if (!participant) {
+  
         return;
     }
 
     const tracks = state['features/base/tracks'];
-
+   
     if (isScreenShareParticipant(participant)) {
         return getVirtualScreenshareParticipantTrack(tracks, participant.id);
     }

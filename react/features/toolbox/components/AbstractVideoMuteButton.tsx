@@ -7,17 +7,17 @@ import { VIDEO_MUTE_BUTTON_ENABLED } from '../../base/flags/constants';
 import { getFeatureFlag } from '../../base/flags/functions';
 import { translate } from '../../base/i18n/functions';
 import { MEDIA_TYPE } from '../../base/media/constants';
-import AbstractButton, { IProps as AbstractButtonProps } from '../../base/toolbox/components/AbstractButton';
-import AbstractVideoMuteButton from '../../base/toolbox/components/BaseVideoMuteButton';
-import { isLocalTrackMuted } from '../../base/tracks/functions.native';
-import { registerShortcut, unregisterShortcut } from '../../keyboard-shortcuts/actions.native';
-import { handleToggleVideoMuted } from '../actions.native';
+import  { IProps as AbstractButtonProps } from '../../base/toolbox/components/AbstractButton';
+import BaseVideoMuteButton from '../../base/toolbox/components/BaseVideoMuteButton';
+import { isLocalTrackMuted } from '../../base/tracks/functions.any';
+import { registerShortcut, unregisterShortcut } from '../../keyboard-shortcuts/actions.any';
+import { handleToggleVideoMuted } from '../actions.any';
 import { isVideoMuteButtonDisabled } from '../functions.native';
 
 /**
- * The type of the React {@code Component} props of {@link VideoMuteButton}.
+ * The type of the React {@code Component} props of {@link AbstractVideoMuteButton}.
  */
-interface IProps extends AbstractButtonProps {
+export interface IProps extends AbstractButtonProps {
 
 
     /**
@@ -30,16 +30,21 @@ interface IProps extends AbstractButtonProps {
      */
     _videoMuted: boolean;
 }
+export interface IProps extends AbstractButtonProps {
+    _videoDisabled: boolean;
+    _videoMuted: boolean;
+}
 
 /**
  * Component that renders a toolbar button for toggling video mute.
  *
- * @augments AbstractVideoMuteButton
+ * @augments BaseVideoMuteButton
  */
-class VideoMuteButton extends AbstractVideoMuteButton<IProps> {
+export default class AbstractVideoMuteButton<P extends IProps> extends BaseVideoMuteButton<P> {
     accessibilityLabel = 'toolbar.accessibilityLabel.videomute';
     toggledAccessibilityLabel = 'toolbar.accessibilityLabel.videounmute';
     label = 'toolbar.videomute';
+    toggledLabel = 'toolbar.videounmute';
     tooltip = 'toolbar.videomute';
     toggledTooltip = 'toolbar.videounmute';
 
@@ -129,7 +134,7 @@ class VideoMuteButton extends AbstractVideoMuteButton<IProps> {
                 ACTION_SHORTCUT_TRIGGERED,
                 { enable: !this._isVideoMuted() }));
 
-        AbstractButton.prototype._onClick.call(this);
+                BaseVideoMuteButton.prototype._onClick.call(this);
     }
 
     /**
@@ -164,7 +169,8 @@ class VideoMuteButton extends AbstractVideoMuteButton<IProps> {
  *     _videoMuted: boolean
  * }}
  */
-function _mapStateToProps(state: IReduxState) {
+
+export function mapStateToProps(state: IReduxState) {
     const tracks = state['features/base/tracks'];
     const enabledFlag = getFeatureFlag(state, VIDEO_MUTE_BUTTON_ENABLED, true);
 
@@ -175,4 +181,4 @@ function _mapStateToProps(state: IReduxState) {
     };
 }
 
-export default translate(connect(_mapStateToProps)(VideoMuteButton));
+

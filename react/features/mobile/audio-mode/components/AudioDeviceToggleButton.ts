@@ -38,7 +38,7 @@ class AudioDeviceToggleButton extends AbstractButton<Props> {
         if (props.children) {
             
            // this.props.dispatch(openSheet(AudioRoutePickerDialog));
-            return props.children(this._onClick);
+            return this.props.children(this._onClick);
         } else {
             return super._getView(props);
         }

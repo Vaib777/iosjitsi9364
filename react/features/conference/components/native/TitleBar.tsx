@@ -69,44 +69,49 @@ const TitleBar = (props: IProps) => {
 
     return (
         <View
-            style = { styles.titleBarWrapper as ViewStyle }>
-            <View style = { styles.pipButtonContainer as ViewStyle }>
-                <PictureInPictureButton styles = { styles.pipButton } />
+            style={styles.titleBarWrapper as ViewStyle}>
+            <View style={styles.pipButtonContainer as ViewStyle}>
+                <PictureInPictureButton styles={styles.pipButton} />
             </View>
             <View
-                pointerEvents = 'box-none'
-                style = { styles.roomNameWrapper as ViewStyle }>
+                pointerEvents='box-none'
+                style={styles.roomNameWrapper as ViewStyle}>
                 {
                     props._conferenceTimerEnabled
-                    && <View style = { styles.roomTimerView as ViewStyle }>
-                        <ConferenceTimer textStyle = { styles.roomTimer } />
+                    && <View style={styles.roomTimerView as ViewStyle}>
+                        <ConferenceTimer textStyle={styles.roomTimer} />
                     </View>
                 }
                 {
                     props._roomNameEnabled
-                    && <View style = { styles.roomNameView as ViewStyle }>
+                    && <View style={styles.roomNameView as ViewStyle}>
                         <Text
-                            numberOfLines = { 1 }
-                            style = { styles.roomName }>
-                            { props._meetingName }
+                            numberOfLines={1}
+                            style={styles.roomName}>
+                            {props._meetingName}
                         </Text>
                     </View>
                 }
                 {/* eslint-disable-next-line react/jsx-no-bind */}
-                {/* <Labels createOnPress = { props._createOnPress } /> */}
+                <Labels createOnPress={props._createOnPress} />
             </View>
-            <View style = { styles.titleBarButtonContainer }>
-                <ToggleCameraButton styles = { styles.titleBarButton } />
+            <View style={styles.titleBarButtonContainer}>
+                <ToggleCameraButton styles={styles.titleBarButton} />
             </View>
-            <View style = { styles.titleBarButtonContainer }>
-                <AudioDeviceToggleButton styles = { styles.titleBarButton } />
+            <View style={styles.titleBarButtonContainer}>
+                <AudioDeviceToggleButton styles={styles.titleBarButton} />
             </View>
-            
-               <View style = { styles.titleBarButtonContainer }>
+            {
+
+                _isParticipantsPaneEnabled
+
+                &&
+                <View style={styles.titleBarButtonContainer}>
                     <ParticipantsPaneButton
-                        styles = { styles.titleBarButton } />
+                        styles={styles.titleBarButton} />
                 </View>
-            
+            }
+
         </View>
     );
 };

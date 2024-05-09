@@ -6,12 +6,12 @@ import { getParticipantById, getPinnedParticipant } from '../base/participants/f
 import MiddlewareRegistry from '../base/redux/MiddlewareRegistry';
 import StateListenerRegistry from '../base/redux/StateListenerRegistry';
 import { SET_DOCUMENT_EDITING_STATUS } from '../etherpad/actionTypes';
-import { isStageFilmstripEnabled } from '../filmstrip/functions';
+import { isStageFilmstripEnabled } from '../filmstrip/functions.native';
 import { isFollowMeActive } from '../follow-me/functions';
 
 import { SET_TILE_VIEW } from './actionTypes';
-import { setTileView } from './actions';
-import { getAutoPinSetting, updateAutoPinnedParticipant } from './functions';
+import { setTileView } from './actions.native';
+import { getAutoPinSetting, updateAutoPinnedParticipant } from './functions.native';
 
 import './subscriber';
 

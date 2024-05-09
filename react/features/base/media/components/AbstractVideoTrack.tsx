@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import { IStore } from '../../../app/types';
-import { trackVideoStarted } from '../../tracks/actions';
+import { trackVideoStarted } from '../../tracks/actions.native';
 import { shouldRenderVideoTrack } from '../functions';
 
-import { Video } from './index';
+import { Video } from './index.native';
 
 /**
  * The type of the React {@code Component} props of {@link AbstractVideoTrack}.

@@ -5,7 +5,7 @@ import { translate } from '../../../base/i18n/functions';
 import { IconEnlarge } from '../../../base/icons/svg';
 import { pinParticipant } from '../../../base/participants/actions';
 import AbstractButton, { IProps as AbstractButtonProps } from '../../../base/toolbox/components/AbstractButton';
-import { shouldDisplayTileView } from '../../../video-layout/functions';
+import { shouldDisplayTileView } from '../../../video-layout/functions.native';
 
 export interface IProps extends AbstractButtonProps {
 

@@ -7,18 +7,19 @@ import { AUDIO_MUTE_BUTTON_ENABLED } from '../../base/flags/constants';
 import { getFeatureFlag } from '../../base/flags/functions';
 import { translate } from '../../base/i18n/functions';
 import { MEDIA_TYPE } from '../../base/media/constants';
-import AbstractAudioMuteButton from '../../base/toolbox/components/BaseAudioMuteButton';
-import AbstractButton, { IProps as AbstractButtonProps } from '../../base/toolbox/components/AbstractButton';
-import { isLocalTrackMuted } from '../../base/tracks/functions.native';
+import BaseAudioMuteButton from '../../base/toolbox/components/BaseAudioMuteButton';
+import { IProps as AbstractButtonProps } from '../../base/toolbox/components/AbstractButton';
+import { isLocalTrackMuted } from '../../base/tracks/functions.any';
 import { registerShortcut, unregisterShortcut } from '../../keyboard-shortcuts/actions.any';
-import { muteLocal } from '../../video-menu/actions.native';
-import { isAudioMuteButtonDisabled } from '../functions.native';
+import { muteLocal } from '../../video-menu/actions.any';
+import { isAudioMuteButtonDisabled } from '../functions.any';
 
 
 /**
- * The type of the React {@code Component} props of {@link AudioMuteButton}.
+ * The type of the React {@code Component} props of {@link AbstractAudioMuteButton}.
  */
-interface IProps extends AbstractButtonProps {
+
+export interface IProps extends AbstractButtonProps {
 
     /**
      * Whether audio is currently muted or not.
@@ -34,12 +35,13 @@ interface IProps extends AbstractButtonProps {
 /**
  * Component that renders a toolbar button for toggling audio mute.
  *
- * @augments AbstractAudioMuteButton
+ * @augments BaseAudioMuteButton
  */
-class AudioMuteButton extends AbstractAudioMuteButton<IProps> {
+export default class AbstractAudioMuteButton<P extends IProps> extends BaseAudioMuteButton<P> {
     accessibilityLabel = 'toolbar.accessibilityLabel.mute';
     toggledAccessibilityLabel = 'toolbar.accessibilityLabel.unmute';
     label = 'toolbar.mute';
+    toggledLabel = 'toolbar.unmute';
     tooltip = 'toolbar.mute';
     toggledTooltip = 'toolbar.unmute';
 
@@ -118,7 +120,7 @@ class AudioMuteButton extends AbstractAudioMuteButton<IProps> {
                 ACTION_SHORTCUT_TRIGGERED,
                 { enable: !this._isAudioMuted() }));
 
-        AbstractButton.prototype._onClick.call(this);
+                BaseAudioMuteButton.prototype._onClick.call(this);
     }
 
     /**
@@ -152,7 +154,7 @@ class AudioMuteButton extends AbstractAudioMuteButton<IProps> {
 
 /**
  * Maps (parts of) the redux state to the associated props for the
- * {@code AudioMuteButton} component.
+ * {@code AbstractAudioMuteButton} component.
  *
  * @param {Object} state - The Redux state.
  * @private
@@ -161,7 +163,8 @@ class AudioMuteButton extends AbstractAudioMuteButton<IProps> {
  *     _disabled: boolean
  * }}
  */
-function _mapStateToProps(state: IReduxState) {
+
+export function mapStateToProps(state: IReduxState) {
     const _audioMuted = isLocalTrackMuted(state['features/base/tracks'], MEDIA_TYPE.AUDIO);
     const _disabled = isAudioMuteButtonDisabled(state);
     const enabledFlag = getFeatureFlag(state, AUDIO_MUTE_BUTTON_ENABLED, true);
@@ -173,4 +176,3 @@ function _mapStateToProps(state: IReduxState) {
     };
 }
 
-export default translate(connect(_mapStateToProps)(AudioMuteButton));

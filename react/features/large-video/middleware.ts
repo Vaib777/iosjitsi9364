@@ -13,7 +13,7 @@ import {
 } from '../base/tracks/actionTypes';
 import { TOGGLE_DOCUMENT_EDITING } from '../etherpad/actionTypes';
 
-import { selectParticipantInLargeVideo } from './actions';
+import { selectParticipantInLargeVideo } from './actions.any';
 import logger from './logger';
 
 import './subscriber';

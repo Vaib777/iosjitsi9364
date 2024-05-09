@@ -253,7 +253,7 @@ function _mapStateToProps(state: IReduxState) {
     } else if (participant?.local) {
         disableVideo = isLocalVideoTrackDesktop(state);
     }
-
+    console.log("disableVideo--->",disableVideo);
     return {
         _disableVideo: disableVideo,
         _height: height,

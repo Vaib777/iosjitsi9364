@@ -43,13 +43,15 @@ IncomingCallInfo *incomingCallInfo = [[IncomingCallInfo alloc] initWithCallerAva
         [builder setFeatureFlag:@"ios.screensharing.enabled" withBoolean:YES];
         [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:YES];
     // }];
-       builder.serverURL = [NSURL URLWithString:@"https://meetdev.melp.us"];
+       builder.serverURL = [NSURL URLWithString:@"https://meet.jit.si"];
+      //builder.serverURL = [NSURL URLWithString:@"https://meetdev.melp.us"];
+      
   // [jitsiMeet application:application didFinishLaunchingWithOptions:launchOptions];
-        [builder setRoom:@"5bdebbeebb84d0e36b705153a0fba61b"];
+        [builder setRoom:@"b934594111c9b6c5a326f037b18be0d5"];
 
       
-
-       [builder setToken:@"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJtZWxwX2NvbmYiLCJzdWIiOiJtZWV0ZGV2Lm1lbHAudXMiLCJtb2RlcmF0b3IiOmZhbHNlLCJpc3MiOiJtZWxwX2NvbmZfOCIsImNvbnRleHQiOnsiY2FsbGVlIjp7Im5hbWUiOiIiLCJpZCI6IjEyMzk5NTI5MzIiLCJhdmF0YXIiOiIiLCJlbWFpbCI6IiJ9LCJ1c2VyIjp7Im5hbWUiOiJWYWliaGF2IEphaW4iLCJpZCI6IjEyMzk5NTI5MzIiLCJhdmF0YXIiOiJodHRwczovL3VzLWFwaS5tZWxwLnVzL2Rvd25sb2FkL3YwLzhxNHEwcXY1OXFtOC9jMDNhQHVzZXIuanBlZz9zZXNzaW9uaWQ9OWRtcWVzcGZ1ZzNrJmlzdGh1bWI9MSIsImVtYWlsIjoiMTIzOTk1MjkzMkBtZWxwLmNvbSJ9LCJncm91cCI6Im9uZXRvb25lIn0sImlhdCI6MTcxNDM4MjYyMywicm9vbSI6IjViZGViYmVlYmI4NGQwZTM2YjcwNTE1M2EwZmJhNjFiIiwicm9vbU5hbWUiOiJWYWliaGF2IEphaW4iLCJleHAiOjE3MTQ0MjU4MjN9.G_mrWznfjVTeKfE7l-Clv7WN5hC7R5Cje50HbeLk5-I"];
+//
+//       [builder setToken:@"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJtZWxwX2NvbmYiLCJzdWIiOiJtZWV0ZGV2Lm1lbHAudXMiLCJtb2RlcmF0b3IiOnRydWUsImlzcyI6Im1lbHBfY29uZl84IiwiY29udGV4dCI6eyJjYWxsZWUiOnsibmFtZSI6IiIsImlkIjoiMTIzOTk1MjkzMiIsImF2YXRhciI6IiIsImVtYWlsIjoiIn0sInVzZXIiOnsibmFtZSI6IlZhaWJoYXYgSmFpbiIsImlkIjoiMTIzOTk1MjkzMiIsImF2YXRhciI6Imh0dHBzOi8vdXMtYXBpLm1lbHAudXMvZG93bmxvYWQvdjAvOHE0cTBxdjU5cW04L2MwM2FAdXNlci5qcGVnP3Nlc3Npb25pZD05ZWJ2czF4am1zY2cmaXN0aHVtYj0xIiwiZW1haWwiOiIxMjM5OTUyOTMyQG1lbHAuY29tIn0sImdyb3VwIjoib25ldG9vbmUifSwiaWF0IjoxNzE1MDA2Njg2LCJyb29tIjoiYjkzNDU5NDExMWM5YjZjNWEzMjZmMDM3YjE4YmUwZDUiLCJyb29tTmFtZSI6IlZhaWJoYXYgSmFpbiIsImV4cCI6MTcxNTA0OTg4Nn0.Yjg4stl1-qqDP3tqeV5n97zeY9mdhCcGU4-P9t-Tc3c"];
 
         [builder setUserInfo:userInfo];
 

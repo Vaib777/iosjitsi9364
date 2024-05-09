@@ -17,7 +17,7 @@ import Container from '../../react/components/native/Container';
 import { toState } from '../../redux/functions';
 import { StyleType } from '../../styles/functions.any';
 import TestHint from '../../testing/components/TestHint';
-import { getVideoTrackByParticipant } from '../../tracks/functions';
+import { getVideoTrackByParticipant } from '../../tracks/functions.any';
 import { ITrack } from '../../tracks/types';
 import { getParticipantById, getParticipantDisplayName, isSharedVideoParticipant } from '../functions';
 
@@ -163,6 +163,7 @@ class ParticipantView extends Component<IProps> {
      * @returns {ReactElement}
      */
     render() {
+        console.log("");
         const {
             _isConnectionInactive,
             _isSharedVideoParticipant,
@@ -178,7 +179,6 @@ class ParticipantView extends Component<IProps> {
                 : `org.jitsi.meet.Participant#${this.props.participantId}`;
 
         const renderSharedVideo = _isSharedVideoParticipant && !disableVideo;
-
         return (
             <Container
                 onClick = { renderVideo || renderSharedVideo ? undefined : onPress }
@@ -274,7 +274,7 @@ function shouldRenderParticipantVideo(stateful: IStateful, id: string) {
     }
 
     /* Then check if audio-only mode is not active. */
-    const audioOnly = state['features/base/audio-only'].enabled;
+    const { enabled: audioOnly } = state['features/base/audio-only'];
 
     if (!audioOnly) {
         return true;

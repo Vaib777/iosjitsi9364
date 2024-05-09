@@ -39,13 +39,6 @@ class HangupButton extends AbstractHangupButton<AbstractButtonProps> {
         super(props);
 
         this._hangup = _.once(() => {
-            // if (uuidv4().toUpperCase()) {
-            //     console.log(uuidv4().toUpperCase());
-            //     CallIntegration.endCall(uuidv4().toUpperCase());
-            // }
-            // sendAnalytics(createToolbarEvent('hangup'));
-            //appNavigate(undefined);
-            console.log(">>>>>>>>>>Hangupressed");
             this.props.dispatch(leaveConference());
           
 

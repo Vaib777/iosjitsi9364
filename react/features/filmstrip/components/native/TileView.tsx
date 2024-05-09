@@ -184,6 +184,7 @@ class TileView extends PureComponent<IProps> {
     render() {
         const { _columns, _height, _thumbnailHeight, _width, onClick } = this.props;
         const participants = this._getSortedParticipants();
+        console.log("participants>>>>>>>>>>>>",participants);
         const initialRowsToRender = Math.ceil(_height / (Number(_thumbnailHeight) + (2 * styles.thumbnail.margin)));
 
         if (this._flatListStyles.minHeight !== _height || this._flatListStyles.minWidth !== _width) {

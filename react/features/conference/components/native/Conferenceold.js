@@ -49,13 +49,13 @@ import {
     AbstractConference,
     abstractMapStateToProps
 } from '../AbstractConference';
-import  AbstractProps  from '../AbstractConference';
+import {AbstractProps } from '../AbstractConference';
 import { isConnecting } from '../functions';
 
 import AlwaysOnLabels from './AlwaysOnLabels';
 import ExpandedLabelPopup from './ExpandedLabelPopup';
 import LonelyMeetingExperience from './LonelyMeetingExperience';
-import TitleBar from '../native/TitleBar';
+import TitleBar from './TitleBar';
 import { EXPANDED_LABEL_TIMEOUT } from './constants';
 import styles from './styles';
 
@@ -346,7 +346,7 @@ class Conference extends AbstractConference<Props, State> {
         return true;
     }
 
-    _createOnPress: (string) => void;
+   // _createOnPress: (string) => void;
 
     /**
      * Creates a function to be invoked when the onPress of the touchables are
